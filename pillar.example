@@ -1,0 +1,9 @@
+cron:
+  root:
+    env:
+      PATH: "/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+    jobs:
+      update:
+        name: /usr/local/bin/update.sh
+        minute: "10"
+        hour: "02"

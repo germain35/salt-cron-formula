@@ -1,14 +1,14 @@
 {%- from "cron/map.jinja" import cron with context %}
 
-{%- for user, params in cron.iteritems() %}
-  {%- for k, v in params.get('env', {}).iteritems() %}
+{%- for user, params in cron.items() %}
+  {%- for k, v in params.get('env', {}).items() %}
 cron_{{user}}_env_{{k}}:
   cron.env_present:
     - name: {{k}}
     - value: {{v}}
     - user: {{user}}
   {%- endfor %}
-  {%- for k, v in params.get('jobs', {}).iteritems() %}
+  {%- for k, v in params.get('jobs', {}).items() %}
 cron_{{user}}_job_{{k}}:
   cron.present:
     - identifier: {{k}}
